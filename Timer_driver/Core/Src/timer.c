@@ -21,13 +21,17 @@ void TIM_Init(void)
 
 	TIM_EnableNVICInterrupt(TIM2_INTERRPT_ID,0);
 
+/*
+ * prescaler = (WAIT_PERIOD_IN_MS * F_clk) / PRELOAD
+ */
 	// set prescaler
-	TIM2_PSC = PRESCALER;
+	TIM2_PSC = (WAIT_PERIOD_IN_MS *F_CLK)/ PRELOAD_VALUE;
+	TIM2_ARR = (uint32)PRELOAD_VALUE;
+	TIM2_SR = 0;
 
-//	TIM2_CNT = (uint32)0xfff;
+	TIM2_CR1 = (TIM_MODE | TIM_START | ALL_SRCS);
 
-	// timer mode (edge-aligned count-up mode)
-	TIM2_CR1 = 1;//(TIM_MODE | TIM_START | EVENT_SRC);
+
 
 }
 
@@ -45,15 +49,15 @@ void TIM_ClrIntFlag(void)
 void TIM_EnableEventTrig(void)
 {
 	// enable event trigger sources
-	TIM2_CR1 &= ~0x02;
+	TIM2_DIER |= 1;
 
 }
 
 
-void TIM_disableEventTrig(void)
+void TIM_DisableEventTrig(void)
 {
 	// disable event trigger sources
-	TIM2_CR1 |= 0x02;
+	TIM2_DIER &= ~1;
 }
 
 

@@ -20,7 +20,7 @@ void TIM_ClrIntFlag(void);
 
 void TIM_EnableEventTrig(void);
 
-void TIM_disableEventTrig(void);
+void TIM_DisableEventTrig(void);
 
 
 #endif /* INC_TIMER_INTERFACE_H_ */

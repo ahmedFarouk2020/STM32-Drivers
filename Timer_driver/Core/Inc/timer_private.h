@@ -23,15 +23,16 @@
 
 #define TIM2  0x40000000UL
 
-#define TIM2_CR1 *((volatile uint32*) (TIM2+0x00))
-#define TIM2_SR  *((volatile uint32*) (TIM2+0x10))
-#define TIM2_PSC *((volatile uint32*) (TIM2+0x28))
-#define TIM2_CNT *((volatile uint32*) (TIM2+0x24))
-#define TIM2_ARR *((volatile uint32*) (TIM2+0x2C))
+#define TIM2_CR1  *((volatile uint32*) (TIM2+0x00))
+#define TIM2_SR   *((volatile uint32*) (TIM2+0x10))
+#define TIM2_PSC  *((volatile uint32*) (TIM2+0x28))
+#define TIM2_CNT  *((volatile uint32*) (TIM2+0x24))
+#define TIM2_ARR  *((volatile uint32*) (TIM2+0x2C))
+#define TIM2_DIER *((volatile uint32*) (TIM2+0x0C))
 
 
 
-#define TIM_START 0x01
+#define TIM_START (1<<0)
 
 
 
